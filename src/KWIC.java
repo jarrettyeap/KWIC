@@ -1,5 +1,5 @@
-/**
- * Created by hooitong on 20/8/15.
- */
 public class KWIC {
+    public static void main(String[] args) {
+        
+    }
 }
