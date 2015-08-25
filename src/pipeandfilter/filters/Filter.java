@@ -12,14 +12,30 @@ public abstract class Filter<I, O> implements Runnable {
         this.outPipe = out;
     }
 
-    @Override
-    public void run() {
-        transform();
+    @Override public void run() {
+        passBetween();
+    }
+
+    /**
+     * Used to read the input from the pipe, transform and pass output to pipe
+     */
+    private void passBetween() {
+        try {
+            I input;
+            while ((input = inPipe.get()) != null) {
+                O output = transform(input);
+                outPipe.put(output);
+            }
+        } catch (InterruptedException e) {
+            // TODO: Handle Interrupts / Deadlocks
+        }
+
+        outPipe.close();
     }
 
     /**
      * Implemented classes must implement this method to transform data
      * received from input to output
      */
-    protected abstract void transform();
+    protected abstract O transform(I in);
 }

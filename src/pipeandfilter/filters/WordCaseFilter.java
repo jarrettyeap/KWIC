@@ -4,8 +4,8 @@ import pipeandfilter.pipe.Pipe;
 
 import java.util.List;
 
-public class CircularShifterFilter extends Filter<List<String>, List<String>> {
-    public CircularShifterFilter(Pipe<List<String>> in, Pipe<List<String>> out) {
+public class WordCaseFilter extends Filter<List<String>, List<String>> {
+    public WordCaseFilter(Pipe<List<String>> in, Pipe<List<String>> out) {
         super(in, out);
     }
 

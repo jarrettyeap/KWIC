@@ -1,27 +1,15 @@
 package pipeandfilter.filters;
 
-import java.io.EOFException;
-import java.util.Arrays;
+import pipeandfilter.pipe.Pipe;
 
-public class NoiseWordFilter extends Filter {
+import java.util.List;
 
-	public static final String noiseWords[] = {"is", "the", "of", "and", "as", "a", "after" };
+public class NoiseWordFilter extends Filter<List<String>, List<String>> {
+    public NoiseWordFilter(Pipe<List<String>> in, Pipe<List<String>> out) {
+        super(in, out);
+    }
 
-	protected void transform() {
-		while (true) {
-			try {
-				String string = read();
-				String tokens[] = string.split("\\s");
-				
-				if(Arrays.asList(noiseWords).contains(tokens[0].toLowerCase()))
-					continue;
-				
-				write (string);
-				
-			} catch (EOFException e) {
-				write(null);
-				break;
-			}
-		}
-	}
+    protected List<String> transform(List<String> input) {
+        return null;
+    }
 }
