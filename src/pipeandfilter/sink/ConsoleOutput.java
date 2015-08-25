@@ -1,4 +1,4 @@
-package pipeandfilter.console;
+package pipeandfilter.sink;
 
 import pipeandfilter.pipe.Pipe;
 

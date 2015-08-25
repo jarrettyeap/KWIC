@@ -1,4 +1,4 @@
-package pipeandfilter.console;
+package pipeandfilter.generator;
 
 import pipeandfilter.pipe.Pipe;
 
