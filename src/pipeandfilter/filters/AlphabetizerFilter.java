@@ -1,4 +1,4 @@
-package filters;
+package pipeandfilter.filters;
 
 public class AlphabetizerFilter {
 }

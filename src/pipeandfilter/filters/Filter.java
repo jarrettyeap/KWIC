@@ -1,6 +1,6 @@
-package filters;
+package pipeandfilter.filters;
 
-import pipe.Pipe;
+import pipeandfilter.pipe.Pipe;
 
 public abstract class Filter<I, O> implements Runnable {
 

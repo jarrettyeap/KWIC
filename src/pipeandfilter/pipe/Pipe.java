@@ -1,4 +1,4 @@
-package pipe;
+package pipeandfilter.pipe;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -8,7 +8,7 @@ import java.util.Queue;
 public class Pipe<E> {
     private Queue<E> pipeBuffer = new LinkedList<E>();
 
-    // Boolean flags to support closing of pipe for batch processing
+    // Boolean flags to support closing of pipeandfilter.pipe for batch processing
     private boolean openForWriting = true;
     private boolean openForReading = true;
 

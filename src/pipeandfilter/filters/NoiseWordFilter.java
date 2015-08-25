@@ -1,4 +1,4 @@
-package filters;
+package pipeandfilter.filters;
 
 import java.io.EOFException;
 import java.util.Arrays;

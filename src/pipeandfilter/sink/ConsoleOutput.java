@@ -1,6 +1,6 @@
-package sink;
+package pipeandfilter.sink;
 
-import pipe.Pipe;
+import pipeandfilter.pipe.Pipe;
 
 import java.util.List;
 
