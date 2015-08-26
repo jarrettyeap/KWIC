@@ -13,7 +13,8 @@ public class Pipe<E> {
     private boolean openForReading = true;
 
     public synchronized boolean put(E object) {
-        if(!openForWriting) throw new RuntimeException(new IOException("Pipe has been closed"));
+        if (!openForWriting)
+            throw new RuntimeException(new IOException("Pipe has been closed"));
 
         boolean result = pipeBuffer.add(object);
         notify();
@@ -21,12 +22,15 @@ public class Pipe<E> {
     }
 
     public synchronized E get() throws InterruptedException {
-        if(!openForReading) throw new NoSuchElementException("Pipe is closed and empty");
+        if (!openForReading)
+            throw new NoSuchElementException("Pipe is closed and empty");
 
-        while (pipeBuffer.isEmpty()) wait();
+        while (pipeBuffer.isEmpty())
+            wait();
 
         E object = pipeBuffer.remove();
-        if(object == null) openForReading = false;
+        if (object == null)
+            openForReading = false;
         return object;
     }
 
