@@ -31,6 +31,8 @@ public class ConsoleOutput implements Runnable {
      * @param output
      */
     private void processAndDisplay(List<String> output) {
-
+        for (String keyword : output) {
+            System.out.println(keyword);
+        }
     }
 }

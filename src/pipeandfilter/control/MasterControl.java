@@ -47,12 +47,13 @@ public class MasterControl {
 
     /**
      * Set the properties of noise word and word case filter
-     * to used the given filter list.
+     * to use the given filter list.
      *
      * @param filterList the list of ignore/noise words to filter
      */
     public static void setNoiseWords(List<String> filterList) {
-
+        noiseWord.setFilterWords(filterList);
+        wordCase.setFilterWords(filterList);
     }
 
     private static void setupPipeline() {
