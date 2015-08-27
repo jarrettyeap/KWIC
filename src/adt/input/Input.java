@@ -11,6 +11,9 @@ public class Input {
 	MovieTitleMemory movieTitleArray = MovieTitleMemory.getInstance();
 	NoiseWordMemory noiseWordArray = NoiseWordMemory.getInstance();
 	
+	/**
+	 * To add a movie title to the system
+	 */
 	public void addMovieTitle () {
 		String temp;
 		while (sc.hasNextLine()) {
@@ -23,6 +26,9 @@ public class Input {
 		}
 	}
 	
+	/**
+	 * To add a noise word to the system
+	 */
 	public void addNoiseWord() {
 		String temp;
 		while (sc.hasNextLine()) {

@@ -6,6 +6,11 @@ public class CircularShift {
 
 	private ArrayList<String> shiftedList = new ArrayList<String>();
 	
+	/**
+	 * To circularize every sentence in the ArrayList
+	 * @param inputArray
+	 * @return
+	 */
 	public ArrayList<String> circularize(ArrayList<String> inputArray) {
 		for (int i=0; i<inputArray.size(); i++) {
 			String string = inputArray.get(i);
@@ -23,6 +28,10 @@ public class CircularShift {
 		return shiftedList;
 	}
 	
+	/**
+	 * To return the shifted ArrayList
+	 * @return
+	 */
 	public ArrayList<String> getArrayList() {
 		return shiftedList;
 	}

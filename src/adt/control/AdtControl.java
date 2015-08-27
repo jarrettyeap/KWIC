@@ -22,7 +22,10 @@ public class AdtControl {
 	static MovieTitleMemory movieTitleArray = MovieTitleMemory.getInstance();
 	static NoiseWordMemory noiseWordArray = NoiseWordMemory.getInstance();
 	static ArrayList<String> tempArray;
-			
+	
+	/**
+	 * To start running KWIC
+	 */
 	public static void setup() {
 		System.out.println("Please key in the list of movie title: ");
 		System.out.println("Press enter to terminate.");

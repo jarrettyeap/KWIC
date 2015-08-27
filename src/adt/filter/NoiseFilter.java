@@ -11,6 +11,12 @@ public class NoiseFilter {
 	private ArrayList<String> filterList = new ArrayList<String>();
 	private ArrayList<String> noiseWordList = noiseWordArray.getArrayList();
 
+	
+	/**
+	 * To filter out String with noise word as the 1st word of the sentence
+	 * @param inputArray
+	 * @return
+	 */
 	public ArrayList<String> noiseWordFilter(ArrayList<String> inputArray) {
 
 		filterList = inputArray;
@@ -34,6 +40,10 @@ public class NoiseFilter {
 		return filterList;
 	}
 
+	/**
+	 * To return the filtered ArrayList
+	 * @return
+	 */
 	public ArrayList<String> getFilterList() {
 		return filterList;
 	}
