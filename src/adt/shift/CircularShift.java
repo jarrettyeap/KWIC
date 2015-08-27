@@ -6,24 +6,7 @@ public class CircularShift {
 
 	private ArrayList<String> shiftedList = new ArrayList<String>();
 	
-	/**
-	public void circularizer(ArrayList<String> arrayList) {
-		for (String sentence : arrayList) {
-            String[] tokens = sentence.split("\\s");
-
-            for (int start = 0; start < tokens.length; start++) {
-                StringBuilder sb = new StringBuilder();
-                for (int i = start; i < start + tokens.length; i++) {
-                    sb.append(tokens[i % tokens.length]);
-                    sb.append(" ");
-                }
-                shiftedList.add(sb.toString());
-            }
-        }
-	}
-	**/
-	
-	public void circularizer(ArrayList<String> inputArray) {
+	public void circularize(ArrayList<String> inputArray) {
 		for (int i=0; i<inputArray.size(); i++) {
 			String string = inputArray.get(i);
 			String [] stringArray = string.split("\\s");
@@ -36,7 +19,6 @@ public class CircularShift {
                 }
                 shiftedList.add(sb.toString());
 			}
-			
 		}
 	}
 	

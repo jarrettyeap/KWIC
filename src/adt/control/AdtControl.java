@@ -26,8 +26,8 @@ public class AdtControl {
 		System.out.println("Please key in the list of noise words: ");
 		System.out.println("Press enter to terminate.");
 		input.addNoiseWord();
-		
-		circularShift.circularizer(movieTitleArray.getArrayList());
+
+		circularShift.circularize(movieTitleArray.getArrayList());
 		noiseFilter.noiseWordFilter(circularShift.getArrayList());
 		alphabetSort.alphabetize(noiseFilter.getFilterList());
 		
