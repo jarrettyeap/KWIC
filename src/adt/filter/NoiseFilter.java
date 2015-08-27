@@ -11,7 +11,7 @@ public class NoiseFilter {
 	private ArrayList<String> filterList = new ArrayList<String>();
 	private ArrayList<String> noiseWordList = noiseWordArray.getArrayList();
 
-	public void noiseWordFilter (ArrayList<String> inputArray) {
+	public void noiseWordFilter(ArrayList<String> inputArray) {
 
 		filterList = inputArray;
 		
