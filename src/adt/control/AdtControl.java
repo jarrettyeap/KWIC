@@ -2,6 +2,7 @@ package adt.control;
 
 import java.util.ArrayList;
 
+import adt.duplicate.CheckDuplicate;
 import adt.filter.NoiseFilter;
 import adt.input.Input;
 import adt.memory.MovieTitleMemory;
@@ -17,9 +18,10 @@ public class AdtControl {
 	static CircularShift circularShift = new CircularShift();
 	static NoiseFilter noiseFilter = new NoiseFilter();
 	static AlphabetSort alphabetSort = new AlphabetSort();
+	static CheckDuplicate duplicate = new CheckDuplicate();
 	static MovieTitleMemory movieTitleArray = MovieTitleMemory.getInstance();
 	static NoiseWordMemory noiseWordArray = NoiseWordMemory.getInstance();
-	static ArrayList<String> tempArray = movieTitleArray.getArrayList();
+	static ArrayList<String> tempArray;
 			
 	public static void setup() {
 		System.out.println("Please key in the list of movie title: ");
@@ -29,11 +31,16 @@ public class AdtControl {
 		System.out.println("Please key in the list of noise words: ");
 		System.out.println("Press enter to terminate.");
 		input.addNoiseWord();
-
+		
+		duplicate.checkDuplicate(movieTitleArray.getArrayList());
+		duplicate.checkDuplicate(noiseWordArray.getArrayList());
+		
+		tempArray = movieTitleArray.getArrayList();
 		tempArray = circularShift.circularize(tempArray);
 		tempArray = noiseFilter.noiseWordFilter(tempArray);
 		tempArray = alphabetSort.alphabetize(tempArray);
+		duplicate.checkDuplicate(tempArray);
 		
-		output.print(alphabetSort.getSortedList());
+		output.print(tempArray);
 	}
 }
