@@ -7,9 +7,11 @@ public class AlphabetSort {
 
 	ArrayList<String> sortedList = new ArrayList<String>();
 	
-	public void alphabetize (ArrayList<String> inputList) {
+	public ArrayList<String> alphabetize (ArrayList<String> inputList) {
 		sortedList = inputList;
 		Collections.sort(sortedList);
+		
+		return sortedList;
 	}
 	
 	public ArrayList<String> getSortedList() {

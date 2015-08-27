@@ -1,5 +1,7 @@
 package adt.control;
 
+import java.util.ArrayList;
+
 import adt.filter.NoiseFilter;
 import adt.input.Input;
 import adt.memory.MovieTitleMemory;
@@ -17,7 +19,8 @@ public class AdtControl {
 	static AlphabetSort alphabetSort = new AlphabetSort();
 	static MovieTitleMemory movieTitleArray = MovieTitleMemory.getInstance();
 	static NoiseWordMemory noiseWordArray = NoiseWordMemory.getInstance();
-	
+	static ArrayList<String> tempArray = movieTitleArray.getArrayList();
+			
 	public static void setup() {
 		System.out.println("Please key in the list of movie title: ");
 		System.out.println("Press enter to terminate.");
@@ -27,9 +30,9 @@ public class AdtControl {
 		System.out.println("Press enter to terminate.");
 		input.addNoiseWord();
 
-		circularShift.circularize(movieTitleArray.getArrayList());
-		noiseFilter.noiseWordFilter(circularShift.getArrayList());
-		alphabetSort.alphabetize(noiseFilter.getFilterList());
+		tempArray = circularShift.circularize(tempArray);
+		tempArray = noiseFilter.noiseWordFilter(tempArray);
+		tempArray = alphabetSort.alphabetize(tempArray);
 		
 		output.print(alphabetSort.getSortedList());
 	}
