@@ -2,6 +2,7 @@ package adt.control;
 
 import java.util.ArrayList;
 
+import adt.capitalize.Capitalize;
 import adt.duplicate.CheckDuplicate;
 import adt.filter.NoiseFilter;
 import adt.input.Input;
@@ -19,6 +20,7 @@ public class AdtControl {
 	static NoiseFilter noiseFilter = new NoiseFilter();
 	static AlphabetSort alphabetSort = new AlphabetSort();
 	static CheckDuplicate duplicate = new CheckDuplicate();
+	static Capitalize capitalize = new Capitalize();
 	static MovieTitleMemory movieTitleArray = MovieTitleMemory.getInstance();
 	static NoiseWordMemory noiseWordArray = NoiseWordMemory.getInstance();
 	static ArrayList<String> tempArray;
@@ -42,6 +44,7 @@ public class AdtControl {
 		tempArray = circularShift.circularize(tempArray);
 		tempArray = noiseFilter.noiseWordFilter(tempArray);
 		tempArray = alphabetSort.alphabetize(tempArray);
+		tempArray = capitalize.capitalize(tempArray);
 		duplicate.checkDuplicate(tempArray);
 		
 		output.print(tempArray);
