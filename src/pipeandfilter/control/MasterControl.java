@@ -41,7 +41,12 @@ public class MasterControl {
      * Setup pipeline if needed and initiate pipeline sequence.
      */
     public static void setup() {
-        setupPipeline();
+        /* Restart pipeline if already initialized once */
+        if (pipes == null)
+            setupPipeline();
+        else
+            restartPipeline();
+
         startPipeline();
     }
 
@@ -88,6 +93,11 @@ public class MasterControl {
         output = new ConsoleOutput(alphaToOutput);
     }
 
+    private static void restartPipeline() {
+        for (Pipe pipe : pipes)
+            pipe.open();
+    }
+
     private static void startPipeline() {
         List<Callable<Object>> callables = new ArrayList<Callable<Object>>();
 
@@ -104,10 +114,16 @@ public class MasterControl {
             es.invokeAll(callables);
         } catch (InterruptedException e) {
             cleanup();
+            System.out.println("ERROR: Problem occurred for trying to start pipeline");
+            e.printStackTrace();
         }
     }
 
+    /**
+     * Closes all pipes if the pipeline gets interrupted.
+     */
     private static void cleanup() {
-        System.out.println("Error");
+        for (Pipe pipe : pipes)
+            pipe.close();
     }
 }

@@ -19,6 +19,9 @@ public class ConsoleInput implements Runnable {
         putInputIntoPipe();
     }
 
+    /**
+     * Receive input from the console and put into pipe.
+     */
     private void putInputIntoPipe() {
         Scanner sc = new Scanner(System.in);
         ArrayList<String> inputList = new ArrayList<String>();

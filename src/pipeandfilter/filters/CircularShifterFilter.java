@@ -11,8 +11,10 @@ public class CircularShifterFilter extends Filter<List<String>, List<String>> {
     }
 
     /**
-     * @param input
-     * @return
+     * For each sentence in the input, circularize it and add into output pipe.
+     *
+     * @param input List of string from input pipe.
+     * @return List of string that are circular shifted.
      */
     protected List<String> transform(List<String> input) {
         List<String> shiftedList = new ArrayList<String>();

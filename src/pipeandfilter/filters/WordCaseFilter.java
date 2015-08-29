@@ -16,6 +16,12 @@ public class WordCaseFilter extends Filter<List<String>, List<String>> {
         super(in, out);
     }
 
+    /**
+     * Transform the given input by capitalizing keywords and lower casing non-keywords.
+     *
+     * @param input List of string from input pipe.
+     * @return List of string that are capitalized accordingly.
+     */
     protected List<String> transform(List<String> input) {
         List<String> outputList = new ArrayList<String>();
         for (String sentence : input) {

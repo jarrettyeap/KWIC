@@ -17,7 +17,7 @@ public abstract class Filter<I, O> implements Runnable {
     }
 
     /**
-     * Used to read the input from the pipe, transform and pass output to pipe
+     * Used to read the input from the pipe, transform and pass output to pipe.
      */
     private void passBetween() {
         try {
@@ -34,7 +34,7 @@ public abstract class Filter<I, O> implements Runnable {
 
     /**
      * Implemented classes must implement this method to transform data
-     * received from input to output
+     * received from input to output.
      */
     protected abstract O transform(I in);
 }

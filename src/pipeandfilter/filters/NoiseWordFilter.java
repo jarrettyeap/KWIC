@@ -16,6 +16,12 @@ public class NoiseWordFilter extends Filter<List<String>, List<String>> {
         this.filterList = list;
     }
 
+    /**
+     * Filter input to remove noise word from KWIC index.
+     *
+     * @param input List of string from input pipe.
+     * @return List of string that has noise word filtered.
+     */
     protected List<String> transform(List<String> input) {
         List<String> outputList = new ArrayList<String>();
         for (String sentence : input) {

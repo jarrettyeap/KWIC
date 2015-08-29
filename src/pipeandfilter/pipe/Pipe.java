@@ -7,8 +7,7 @@ import java.util.Queue;
 
 public class Pipe<E> {
     private Queue<E> pipeBuffer = new LinkedList<E>();
-
-    // Boolean flags to support closing of pipeandfilter.pipe for batch processing
+    
     private boolean openForWriting = true;
     private boolean openForReading = true;
 
@@ -37,6 +36,13 @@ public class Pipe<E> {
     public synchronized void close() {
         openForWriting = false;
         pipeBuffer.add(null);
+        notify();
+    }
+
+    public synchronized void open() {
+        pipeBuffer.clear();
+        openForWriting = true;
+        openForReading = true;
         notify();
     }
 }
