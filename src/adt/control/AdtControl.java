@@ -44,7 +44,7 @@ public class AdtControl {
         tempArray = circularShift.circularize(tempArray);
         tempArray = noiseFilter.noiseWordFilter(tempArray);
         tempArray = alphabetSort.alphabetize(tempArray);
-        tempArray = capitalize.capitalize(tempArray);
+        tempArray = capitalize.capitalize(tempArray, noiseWordArray.getArrayList());
         duplicate.checkDuplicate(tempArray);
 
         output.print(tempArray);
