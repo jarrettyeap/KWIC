@@ -29,7 +29,6 @@ public abstract class Filter<I, O> implements Runnable {
         } catch (InterruptedException e) {
             // TODO: Handle Interrupts / Deadlocks
         }
-
         outPipe.close();
     }
 

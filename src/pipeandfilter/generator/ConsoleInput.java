@@ -39,11 +39,12 @@ public class ConsoleInput implements Runnable {
 
         System.out.println("Please enter the list of ignore words (separated by space or comma): ");
         String ignoreWords = sc.nextLine();
+
         ArrayList<String> ignoreList =
             new ArrayList<String>(Arrays.asList(ignoreWords.split("(,\\s)+")));
         MasterControl.setNoiseWords(ignoreList);
 
-        sc.close();
         inputPipe.put(inputList);
+        inputPipe.close();
     }
 }

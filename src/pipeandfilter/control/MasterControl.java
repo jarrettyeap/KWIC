@@ -57,41 +57,38 @@ public class MasterControl {
     }
 
     private static void setupPipeline() {
-        if (input == null && output == null) {
-            input = new ConsoleInput(inputToWordCase);
-            output = new ConsoleOutput(alphaToOutput);
-        }
+        pipes = new ArrayList<Pipe>();
+        filters = new ArrayList<Filter>();
 
-        if (pipes == null && filters == null) {
-            // Create the required pipes.
-            inputToWordCase = new Pipe<List<String>>();
-            wordCaseToCircular = new Pipe<List<String>>();
-            circularToNoise = new Pipe<List<String>>();
-            noiseToAlpha = new Pipe<List<String>>();
-            alphaToOutput = new Pipe<List<String>>();
+        // Create the required pipes.
+        inputToWordCase = new Pipe<List<String>>();
+        wordCaseToCircular = new Pipe<List<String>>();
+        circularToNoise = new Pipe<List<String>>();
+        noiseToAlpha = new Pipe<List<String>>();
+        alphaToOutput = new Pipe<List<String>>();
 
-            pipes.add(inputToWordCase);
-            pipes.add(wordCaseToCircular);
-            pipes.add(circularToNoise);
-            pipes.add(noiseToAlpha);
-            pipes.add(alphaToOutput);
+        pipes.add(inputToWordCase);
+        pipes.add(wordCaseToCircular);
+        pipes.add(circularToNoise);
+        pipes.add(noiseToAlpha);
+        pipes.add(alphaToOutput);
 
-            // Create the required filters and connect the pipes to the filters.
-            alphabetizer = new AlphabetizerFilter(noiseToAlpha, alphaToOutput);
-            circularShifter = new CircularShifterFilter(wordCaseToCircular, circularToNoise);
-            noiseWord = new NoiseWordFilter(circularToNoise, noiseToAlpha);
-            wordCase = new WordCaseFilter(inputToWordCase, wordCaseToCircular);
+        // Create the required filters and connect the pipes to the filters.
+        alphabetizer = new AlphabetizerFilter(noiseToAlpha, alphaToOutput);
+        circularShifter = new CircularShifterFilter(wordCaseToCircular, circularToNoise);
+        noiseWord = new NoiseWordFilter(circularToNoise, noiseToAlpha);
+        wordCase = new WordCaseFilter(inputToWordCase, wordCaseToCircular);
 
-            filters.add(alphabetizer);
-            filters.add(circularShifter);
-            filters.add(noiseWord);
-            filters.add(wordCase);
-        }
+        filters.add(alphabetizer);
+        filters.add(circularShifter);
+        filters.add(noiseWord);
+        filters.add(wordCase);
+
+        input = new ConsoleInput(inputToWordCase);
+        output = new ConsoleOutput(alphaToOutput);
     }
 
     private static void startPipeline() {
-        int envProcessorCount = Runtime.getRuntime().availableProcessors();
-        ExecutorService es = Executors.newFixedThreadPool(envProcessorCount);
         List<Callable<Object>> callables = new ArrayList<Callable<Object>>();
 
         for (Filter filter : filters) {
@@ -101,15 +98,16 @@ public class MasterControl {
         callables.add(Executors.callable(input));
         callables.add(Executors.callable(output));
 
+        ExecutorService es = Executors.newFixedThreadPool(callables.size());
+
         try {
             es.invokeAll(callables);
         } catch (InterruptedException e) {
             cleanup();
         }
-
     }
 
     private static void cleanup() {
-
+        System.out.println("Error");
     }
 }

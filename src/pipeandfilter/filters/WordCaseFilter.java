@@ -21,11 +21,14 @@ public class WordCaseFilter extends Filter<List<String>, List<String>> {
         for (String sentence : input) {
             sentence = sentence.toLowerCase();
             String[] tokens = sentence.split("\\s");
-
-            if (!filterList.contains(tokens[0])) {
-                sentence = sentence.substring(0, 1).toUpperCase() + sentence.substring(1);
+            StringBuilder sb = new StringBuilder();
+            for (String token : tokens) {
+                if (!filterList.contains(token)) {
+                    token = token.substring(0, 1).toUpperCase() + token.substring(1);
+                }
+                sb.append(token + ' ');
             }
-            outputList.add(sentence);
+            outputList.add(sb.toString().trim());
         }
         return outputList;
     }
