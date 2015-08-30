@@ -29,12 +29,7 @@ public class AdtControl {
      * To start running KWIC
      */
     public static void setup() {
-        System.out.println("Please key in the list of movie title: ");
-        System.out.println("Press enter to terminate.");
         input.addMovieTitle();
-
-        System.out.println("Please key in the list of noise words: ");
-        System.out.println("Press enter to terminate.");
         input.addNoiseWord();
 
         duplicate.checkDuplicate(movieTitleArray.getArrayList());
