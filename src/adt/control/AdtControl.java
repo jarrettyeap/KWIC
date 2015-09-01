@@ -10,8 +10,6 @@ import adt.output.Output;
 import adt.shift.CircularShift;
 import adt.sort.AlphabetSort;
 
-import java.util.ArrayList;
-
 public class AdtControl {
 
     static Input input = new Input();
@@ -23,7 +21,6 @@ public class AdtControl {
     static Capitalize capitalize = new Capitalize();
     static MovieTitleMemory movieTitleArray = MovieTitleMemory.getInstance();
     static NoiseWordMemory noiseWordArray = NoiseWordMemory.getInstance();
-    static ArrayList<String> tempArray;
 
     /**
      * To start running KWIC
@@ -32,16 +29,18 @@ public class AdtControl {
         input.addMovieTitle();
         input.addNoiseWord();
 
-        duplicate.checkDuplicate(movieTitleArray.getArrayList());
-        duplicate.checkDuplicate(noiseWordArray.getArrayList());
+        movieTitleArray.setArrayList(duplicate.checkDuplicate(movieTitleArray.getArrayList()));
+        noiseWordArray.setArrayList(duplicate.checkDuplicate(noiseWordArray.getArrayList()));
 
-        tempArray = movieTitleArray.getArrayList();
-        tempArray = circularShift.circularize(tempArray);
-        tempArray = noiseFilter.noiseWordFilter(tempArray);
-        tempArray = alphabetSort.alphabetize(tempArray);
-        tempArray = capitalize.capitalize(tempArray, noiseWordArray.getArrayList());
-        duplicate.checkDuplicate(tempArray);
+        //duplicate.checkDuplicate(movieTitleArray.getArrayList());
+        //duplicate.checkDuplicate(noiseWordArray.getArrayList());
+        
+        circularShift.circularize(movieTitleArray.getArrayList());
+        noiseFilter.noiseWordFilter(circularShift.getShiftedList());
+        alphabetSort.alphabetize(noiseFilter.getFilterList());
+        capitalize.capitalize(alphabetSort.getSortedList(), noiseWordArray.getArrayList());
+        duplicate.checkDuplicate(capitalize.getCapitalList());
 
-        output.print(tempArray);
+        output.print(duplicate.getDuplicateList());
     }
 }

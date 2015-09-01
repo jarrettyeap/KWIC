@@ -12,7 +12,7 @@ public class CircularShift {
      * @param inputArray
      * @return
      */
-    public ArrayList<String> circularize(ArrayList<String> inputArray) {
+    public void circularize(ArrayList<String> inputArray) {
         for (int i = 0; i < inputArray.size(); i++) {
             String string = inputArray.get(i);
             String[] stringArray = string.split("\\s");
@@ -26,7 +26,6 @@ public class CircularShift {
                 shiftedList.add(sb.toString());
             }
         }
-        return shiftedList;
     }
 
     /**
@@ -34,7 +33,7 @@ public class CircularShift {
      *
      * @return
      */
-    public ArrayList<String> getArrayList() {
+    public ArrayList<String> getShiftedList() {
         return shiftedList;
     }
 

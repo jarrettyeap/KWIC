@@ -16,9 +16,10 @@ public class NoiseFilter {
      * To filter out String with noise word as the 1st word of the sentence
      *
      * @param inputArray
+     * @return 
      * @return
      */
-    public ArrayList<String> noiseWordFilter(ArrayList<String> inputArray) {
+    public void noiseWordFilter(ArrayList<String> inputArray) {
 
         filterList = inputArray;
 
@@ -38,7 +39,6 @@ public class NoiseFilter {
                 }
             }
         }
-        return filterList;
     }
 
     /**

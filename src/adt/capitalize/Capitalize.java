@@ -6,7 +6,7 @@ public class Capitalize {
 
     private ArrayList<String> capitalizeList = new ArrayList<String>();
 
-    public ArrayList<String> capitalize(ArrayList<String> inputArray,
+    public void capitalize(ArrayList<String> inputArray,
         ArrayList<String> noiseArray) {
         for (int i = 0; i < inputArray.size(); i++) {
             String string = inputArray.get(i);
@@ -28,7 +28,9 @@ public class Capitalize {
 
             capitalizeList.add(sb.toString().trim());
         }
-
-        return capitalizeList;
     }
+
+	public ArrayList<String> getCapitalList() {
+		return capitalizeList;
+	}
 }
