@@ -28,6 +28,10 @@ public class MovieTitleMemory {
     public String get(int position) {
         return movieTitleList.get(position);
     }
+    
+    public void setArrayList(ArrayList<String> checkDuplicate) {
+    	movieTitleList = checkDuplicate;
+    }
 
     public ArrayList<String> getArrayList() {
         return movieTitleList;

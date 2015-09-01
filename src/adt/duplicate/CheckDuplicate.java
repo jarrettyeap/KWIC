@@ -15,6 +15,7 @@ public class CheckDuplicate {
             for (int j = i + 1; j < arrayList.size(); j++) {
                 if (arrayList.get(i).equalsIgnoreCase(arrayList.get(j))) {
                     arrayList.remove(j);
+                    j--;
                 }
             }
         }
