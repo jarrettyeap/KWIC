@@ -14,8 +14,8 @@ public class AlphabetSort {
      * @return
      */
     public void alphabetize(ArrayList<String> inputList) {
+        Collections.sort(inputList);
         sortedList = inputList;
-        Collections.sort(sortedList);
     }
 
     /**
