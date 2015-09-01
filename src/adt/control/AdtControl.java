@@ -40,7 +40,7 @@ public class AdtControl {
         alphabetSort.alphabetize(noiseFilter.getFilterList());
         capitalize.capitalize(alphabetSort.getSortedList(), noiseWordArray.getArrayList());
         duplicate.checkDuplicate(capitalize.getCapitalList());
-
+       
         output.print(duplicate.getDuplicateList());
     }
 }
