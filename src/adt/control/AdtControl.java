@@ -38,7 +38,7 @@ public class AdtControl {
         circularShift.circularize(movieTitleArray.getArrayList());
         noiseFilter.noiseWordFilter(circularShift.getShiftedList());
         alphabetSort.alphabetize(noiseFilter.getFilterList());
-        capitalize.capitalize(alphabetSort.getSortedList(), noiseWordArray.getArrayList());
+        capitalize.capitalize(alphabetSort.getSortedList());
         duplicate.checkDuplicate(capitalize.getCapitalList());
        
         output.print(duplicate.getDuplicateList());
