@@ -32,9 +32,6 @@ public class AdtControl {
         movieTitleArray.setArrayList(duplicate.checkDuplicate(movieTitleArray.getArrayList()));
         noiseWordArray.setArrayList(duplicate.checkDuplicate(noiseWordArray.getArrayList()));
 
-        //duplicate.checkDuplicate(movieTitleArray.getArrayList());
-        //duplicate.checkDuplicate(noiseWordArray.getArrayList());
-
         circularShift.circularize(movieTitleArray.getArrayList());
         noiseFilter.noiseWordFilter(circularShift.getShiftedList());
         alphabetSort.alphabetize(noiseFilter.getFilterList());
