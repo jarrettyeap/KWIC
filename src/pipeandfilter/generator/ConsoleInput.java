@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ConsoleInput implements Runnable {
-    private static final int TYPE_MANUAL = 1;
+    private static final int TYPE_CONSOLE = 1;
     private static final int TYPE_FILE = 2;
 
     private Pipe<List<String>> inputPipe;
@@ -31,8 +31,8 @@ public class ConsoleInput implements Runnable {
      */
     private void putInputIntoPipe() {
         switch (promptType()) {
-            case TYPE_MANUAL:
-                handleManualInput();
+            case TYPE_CONSOLE:
+                handleConsoleInput();
                 break;
             case TYPE_FILE:
                 handleFileInput();
@@ -56,7 +56,7 @@ public class ConsoleInput implements Runnable {
     /**
      * Receive input from the console and put into pipe.
      */
-    private void handleManualInput() {
+    private void handleConsoleInput() {
         Scanner sc = new Scanner(System.in);
         ArrayList<String> inputList = new ArrayList<String>();
 
@@ -85,6 +85,9 @@ public class ConsoleInput implements Runnable {
         inputPipe.close();
     }
 
+    /**
+     * Receive file path from the console, read string from given file and put into pipe.
+     */
     private void handleFileInput() {
         System.out.println("Please enter the path of title file:");
         Scanner sc = new Scanner(System.in);
@@ -92,22 +95,20 @@ public class ConsoleInput implements Runnable {
         List<String> titleList = new ArrayList<String>();
 
         try {
-            Files.lines(new File(titleFilePath).toPath()).map(s -> s.trim())
-                .filter(s -> !s.isEmpty()).forEach(titleList::add);
+            titleList = compactList(Files.readAllLines(new File(titleFilePath).toPath()));
         } catch (IOException e) {
-            System.out.println("Problem reading given file path.");
+            System.out.println("Problem reading given file path for titles.");
             e.printStackTrace();
         }
 
-        System.out.println("Please enter the path of ignore file:");
+        System.out.println("Please enter the path of ignored words file:");
         String ignoreFilePath = sc.nextLine();
         List<String> ignoreList = new ArrayList<String>();
 
         try {
-            Files.lines(new File(ignoreFilePath).toPath()).map(s -> s.trim())
-                .filter(s -> !s.isEmpty()).forEach(ignoreList::add);
+            ignoreList = compactList(Files.readAllLines(new File(ignoreFilePath).toPath()));
         } catch (IOException e) {
-            System.out.println("Problem reading given file path.");
+            System.out.println("Problem reading given file path for ignored words.");
             e.printStackTrace();
         }
 
@@ -115,5 +116,17 @@ public class ConsoleInput implements Runnable {
 
         inputPipe.put(titleList);
         inputPipe.close();
+    }
+
+    /**
+     * Helper method to remove all empty strings and null from the given list
+     *
+     * @param list
+     * @return the compacted list
+     */
+    private List<String> compactList(List<String> list) {
+        // Remove Empty String and Null Elements
+        list.removeAll(Arrays.asList(null, ""));
+        return list;
     }
 }
