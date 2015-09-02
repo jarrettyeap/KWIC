@@ -14,8 +14,7 @@ public class Capitalize {
             StringBuilder sb = new StringBuilder();
 
             for (int j = 0; j < stringArray.length; j++) {
-                stringArray[j] =
-                    stringArray[j].substring(0, 1).toUpperCase() + stringArray[j].substring(1);
+                stringArray[j] = stringArray[j].toUpperCase();
 
                 for (int k = 0; k < noiseArray.size(); k++) {
                     if (stringArray[j].equalsIgnoreCase(noiseArray.get(k))) {

@@ -19,7 +19,7 @@ public class KWIC {
 
                 switch (option) {
                     case 1:
-                        AdtControl.setup(); //To activate KWIC in Abstract Data Type Architecture
+                        AdtControl.setup();
                         break;
                     case 2:
                         MasterControl.setup();

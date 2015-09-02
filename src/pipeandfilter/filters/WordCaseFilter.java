@@ -30,7 +30,7 @@ public class WordCaseFilter extends Filter<List<String>, List<String>> {
             StringBuilder sb = new StringBuilder();
             for (String token : tokens) {
                 if (!filterList.contains(token)) {
-                    token = token.substring(0, 1).toUpperCase() + token.substring(1);
+                    token = token.toUpperCase();
                 }
                 sb.append(token + ' ');
             }
