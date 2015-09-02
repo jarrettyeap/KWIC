@@ -1,7 +1,7 @@
 package adt.control;
 
 import adt.capitalize.Capitalize;
-import adt.duplicate.CheckDuplicate;
+import adt.utility.Duplicate;
 import adt.filter.NoiseFilter;
 import adt.input.Input;
 import adt.memory.MovieTitleMemory;
@@ -17,7 +17,7 @@ public class AdtControl {
     static CircularShift circularShift = new CircularShift();
     static NoiseFilter noiseFilter = new NoiseFilter();
     static AlphabetSort alphabetSort = new AlphabetSort();
-    static CheckDuplicate duplicate = new CheckDuplicate();
+    static Duplicate duplicate = new Duplicate();
     static Capitalize capitalize = new Capitalize();
     static MovieTitleMemory movieTitleArray = MovieTitleMemory.getInstance();
     static NoiseWordMemory noiseWordArray = NoiseWordMemory.getInstance();

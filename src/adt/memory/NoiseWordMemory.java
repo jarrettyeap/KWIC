@@ -1,5 +1,7 @@
 package adt.memory;
 
+import adt.utility.Duplicate;
+
 import java.util.ArrayList;
 
 public class NoiseWordMemory {
@@ -33,8 +35,7 @@ public class NoiseWordMemory {
         return noiseWordList;
     }
 
-    public void setArrayList(ArrayList<String> checkDuplicate) {
-        noiseWordList = checkDuplicate;
-
+    public void setArrayList(ArrayList<String> list) {
+        noiseWordList = Duplicate.checkDuplicate(list);
     }
 }

@@ -1,5 +1,7 @@
 package adt.memory;
 
+import adt.utility.Duplicate;
+
 import java.util.ArrayList;
 
 public class MovieTitleMemory {
@@ -29,8 +31,8 @@ public class MovieTitleMemory {
         return movieTitleList.get(position);
     }
 
-    public void setArrayList(ArrayList<String> checkDuplicate) {
-        movieTitleList = checkDuplicate;
+    public void setArrayList(ArrayList<String> list) {
+        movieTitleList = Duplicate.checkDuplicate(list);
     }
 
     public ArrayList<String> getArrayList() {
