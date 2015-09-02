@@ -26,18 +26,16 @@ public class AdtControl {
      * To start running KWIC
      */
     public static void setup() {
-        input.addMovieTitle();
-        input.addNoiseWord();
+        input.inputMethod();
 
-        movieTitleArray.setArrayList(duplicate.checkDuplicate(movieTitleArray.getArrayList()));
-        noiseWordArray.setArrayList(duplicate.checkDuplicate(noiseWordArray.getArrayList()));
+        movieTitleArray.setArrayList(movieTitleArray.getArrayList());
+        noiseWordArray.setArrayList(noiseWordArray.getArrayList());
 
         circularShift.circularize(movieTitleArray.getArrayList());
         noiseFilter.noiseWordFilter(circularShift.getShiftedList());
         alphabetSort.alphabetize(noiseFilter.getFilterList());
         capitalize.capitalize(alphabetSort.getSortedList());
-        duplicate.checkDuplicate(capitalize.getCapitalList());
 
-        output.print(duplicate.getDuplicateList());
+        output.print(capitalize.getCapitalList());
     }
 }
