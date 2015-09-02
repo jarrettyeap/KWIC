@@ -13,11 +13,9 @@ public class AlphabetSort {
      * @param inputList
      * @return
      */
-    public ArrayList<String> alphabetize(ArrayList<String> inputList) {
+    public void alphabetize(ArrayList<String> inputList) {
+        Collections.sort(inputList);
         sortedList = inputList;
-        Collections.sort(sortedList);
-
-        return sortedList;
     }
 
     /**

@@ -7,7 +7,7 @@ import java.util.Queue;
 
 public class Pipe<E> {
     private Queue<E> pipeBuffer = new LinkedList<E>();
-    
+
     private boolean openForWriting = true;
     private boolean openForReading = true;
 

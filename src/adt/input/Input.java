@@ -3,6 +3,7 @@ package adt.input;
 import adt.memory.MovieTitleMemory;
 import adt.memory.NoiseWordMemory;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Input {
@@ -18,6 +19,7 @@ public class Input {
         System.out.println("Please key in the list of movie title: ");
         System.out.println("Press enter to terminate.");
 
+        ArrayList<String> inputArray = new ArrayList<String>();
         String temp;
         while (sc.hasNextLine()) {
             temp = sc.nextLine();
@@ -25,8 +27,10 @@ public class Input {
                 break;
             }
 
-            movieTitleArray.add(temp);
+            inputArray.add(temp);
         }
+
+        movieTitleArray.setArrayList(inputArray);
     }
 
     /**
@@ -45,6 +49,7 @@ public class Input {
 
             noiseWordArray.add(temp);
         }
-    }
 
+    }
 }
+

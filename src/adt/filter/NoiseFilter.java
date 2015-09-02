@@ -18,9 +18,7 @@ public class NoiseFilter {
      * @param inputArray
      * @return
      */
-    public ArrayList<String> noiseWordFilter(ArrayList<String> inputArray) {
-
-        filterList = inputArray;
+    public void noiseWordFilter(ArrayList<String> inputArray) {
 
         String noiseWord;
         String inputString;
@@ -28,17 +26,18 @@ public class NoiseFilter {
         for (int i = 0; i < noiseWordList.size(); i++) {
             noiseWord = noiseWordList.get(i);
 
-            for (int j = 0; j < filterList.size(); j++) {
-                inputString = filterList.get(j);
+            for (int j = 0; j < inputArray.size(); j++) {
+                inputString = inputArray.get(j);
                 String[] stringArray = inputString.split("\\s");
 
-                if (stringArray[0].equals(noiseWord)) {
-                    filterList.remove(j);
+                if (stringArray[0].equalsIgnoreCase(noiseWord)) {
+                    inputArray.remove(j);
                     j--;
                 }
             }
         }
-        return filterList;
+
+        filterList = inputArray;
     }
 
     /**

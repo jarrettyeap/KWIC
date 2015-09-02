@@ -32,4 +32,9 @@ public class NoiseWordMemory {
     public ArrayList<String> getArrayList() {
         return noiseWordList;
     }
+
+    public void setArrayList(ArrayList<String> checkDuplicate) {
+        noiseWordList = checkDuplicate;
+
+    }
 }

@@ -1,13 +1,20 @@
 package adt.capitalize;
 
+import adt.memory.NoiseWordMemory;
+
 import java.util.ArrayList;
 
 public class Capitalize {
 
+    NoiseWordMemory noiseWordArray = NoiseWordMemory.getInstance();
+
+    private ArrayList<String> noiseWordList = noiseWordArray.getArrayList();
     private ArrayList<String> capitalizeList = new ArrayList<String>();
 
-    public ArrayList<String> capitalize(ArrayList<String> inputArray,
-        ArrayList<String> noiseArray) {
+    public void capitalize(ArrayList<String> inputArray) {
+
+        ArrayList<String> arrayCapitalizing = new ArrayList<String>();
+
         for (int i = 0; i < inputArray.size(); i++) {
             String string = inputArray.get(i);
             String[] stringArray = string.split("\\s");
@@ -16,8 +23,8 @@ public class Capitalize {
             for (int j = 0; j < stringArray.length; j++) {
                 stringArray[j] = stringArray[j].toUpperCase();
 
-                for (int k = 0; k < noiseArray.size(); k++) {
-                    if (stringArray[j].equalsIgnoreCase(noiseArray.get(k))) {
+                for (int k = 0; k < noiseWordList.size(); k++) {
+                    if (stringArray[j].equalsIgnoreCase(noiseWordList.get(k))) {
                         stringArray[j] = stringArray[j].toLowerCase();
                     }
                 }
@@ -25,9 +32,13 @@ public class Capitalize {
                 sb.append(" ");
             }
 
-            capitalizeList.add(sb.toString().trim());
+            arrayCapitalizing.add(sb.toString().trim());
         }
 
+        capitalizeList = arrayCapitalizing;
+    }
+
+    public ArrayList<String> getCapitalList() {
         return capitalizeList;
     }
 }
