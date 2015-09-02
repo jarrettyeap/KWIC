@@ -20,7 +20,7 @@ public class CircularShifterFilter extends Filter<List<String>, List<String>> {
         List<String> shiftedList = new ArrayList<String>();
 
         for (String sentence : input) {
-            String[] tokens = sentence.split("\\s");
+            String[] tokens = sentence.split("\\s+");
 
             for (int start = 0; start < tokens.length; start++) {
                 StringBuilder sb = new StringBuilder();

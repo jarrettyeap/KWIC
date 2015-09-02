@@ -25,7 +25,7 @@ public class NoiseWordFilter extends Filter<List<String>, List<String>> {
     protected List<String> transform(List<String> input) {
         List<String> outputList = new ArrayList<String>();
         for (String sentence : input) {
-            String[] tokens = sentence.split("\\s", 2);
+            String[] tokens = sentence.split("\\s+", 2);
             if (!filterList.contains(tokens[0].toLowerCase()))
                 outputList.add(sentence);
         }

@@ -26,7 +26,7 @@ public class WordCaseFilter extends Filter<List<String>, List<String>> {
         List<String> outputList = new ArrayList<String>();
         for (String sentence : input) {
             sentence = sentence.toLowerCase();
-            String[] tokens = sentence.split("\\s");
+            String[] tokens = sentence.split("\\s+");
             StringBuilder sb = new StringBuilder();
             for (String token : tokens) {
                 if (!filterList.contains(token)) {
