@@ -15,6 +15,7 @@ public class Output {
     private static final int MENU_STOP = 0;
 
     private static final String header = "--------------------------";
+	private Scanner sc;
 
     /**
      * Prompt the user for the type of output required and perform the corresponding
@@ -45,7 +46,7 @@ public class Output {
      */
     private int promptType() {
         try {
-            Scanner sc = new Scanner(System.in);
+            sc = new Scanner(System.in);
             System.out.println("Index Generated. Select Output Method:");
             System.out.println("1. Console");
             System.out.println("2. Append to File");
@@ -83,7 +84,7 @@ public class Output {
      */
     private int outputToFile(List<String> output) {
         System.out.println("Enter Path for Output File:");
-        Scanner sc = new Scanner(System.in);
+        sc = new Scanner(System.in);
         String outputPath = sc.nextLine();
 
         try (PrintWriter out = new PrintWriter((new FileWriter(outputPath, true)))) {

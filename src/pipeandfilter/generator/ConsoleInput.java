@@ -18,6 +18,7 @@ public class ConsoleInput implements Runnable {
     private static final int MENU_STOP = 0;
 
     private Pipe<List<String>> inputPipe;
+	private Scanner sc;
 
     public ConsoleInput(Pipe<List<String>> input) {
         this.inputPipe = input;
@@ -55,7 +56,7 @@ public class ConsoleInput implements Runnable {
      */
     private int promptType() {
         try {
-            Scanner sc = new Scanner(System.in);
+            sc = new Scanner(System.in);
             System.out.println("Please enter your choice of input:");
             System.out.println("1. Manual Input");
             System.out.println("2. Read Local File");
@@ -69,7 +70,7 @@ public class ConsoleInput implements Runnable {
      * Receive input from the console and put into pipe.
      */
     private int handleConsoleInput() {
-        Scanner sc = new Scanner(System.in);
+        sc = new Scanner(System.in);
         ArrayList<String> inputList = new ArrayList<String>();
 
         System.out.println("Please enter the titles (separated by newline): ");
@@ -104,7 +105,7 @@ public class ConsoleInput implements Runnable {
      */
     private int handleFileInput() {
         System.out.println("Please enter the path of title file:");
-        Scanner sc = new Scanner(System.in);
+        sc = new Scanner(System.in);
         String titleFilePath = sc.nextLine();
         List<String> titleList;
 

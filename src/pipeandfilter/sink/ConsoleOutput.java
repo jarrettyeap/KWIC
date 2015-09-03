@@ -17,6 +17,7 @@ public class ConsoleOutput implements Runnable {
     private static final int MENU_STOP = 0;
 
     private Pipe<List<String>> outputPipe;
+	private Scanner sc;
 
     public ConsoleOutput(Pipe<List<String>> output) {
         this.outputPipe = output;
@@ -69,7 +70,7 @@ public class ConsoleOutput implements Runnable {
      */
     private int promptType() {
         try {
-            Scanner sc = new Scanner(System.in);
+            sc = new Scanner(System.in);
             System.out.println("Index Generated. Select Output Method:");
             System.out.println("1. Console");
             System.out.println("2. Append to File");
@@ -107,7 +108,7 @@ public class ConsoleOutput implements Runnable {
      */
     private int outputToFile(List<String> output) {
         System.out.println("Enter Path for Output File:");
-        Scanner sc = new Scanner(System.in);
+        sc = new Scanner(System.in);
         String outputPath = sc.nextLine();
 
         try (PrintWriter out = new PrintWriter((new FileWriter(outputPath, true)))) {

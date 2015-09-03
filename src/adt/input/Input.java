@@ -116,7 +116,7 @@ public class Input {
      */
     private int handleFileInput() {
         System.out.println("Please enter the path of title file:");
-        Scanner sc = new Scanner(System.in);
+        sc = new Scanner(System.in);
         String titleFilePath = sc.nextLine();
         List<String> titleList;
 
