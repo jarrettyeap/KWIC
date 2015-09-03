@@ -32,7 +32,7 @@ public class AdtControl {
         capitalize.capitalize(alphabetSort.getSortedList());
 
         output.print(capitalize.getCapitalList());
-        
+
         output.print(noiseWordArray.getArrayList());
     }
 }

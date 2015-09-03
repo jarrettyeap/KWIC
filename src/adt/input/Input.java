@@ -39,7 +39,7 @@ public class Input {
     public void addNoiseWord() {
         System.out.println("Please key in the list of noise words: ");
         System.out.println("Press enter to terminate.");
-        
+
         ArrayList<String> inputArray = new ArrayList<String>();
         String temp;
         while (sc.hasNextLine()) {
@@ -50,10 +50,10 @@ public class Input {
             inputArray.add(temp);
             noiseWordArray.add(temp);
         }
-        
+
         noiseWordArray.setArrayList(inputArray);
     }
-    
+
     public void inputMethod() {
         int inputType;
         System.out.println("Please enter your choice of input:");

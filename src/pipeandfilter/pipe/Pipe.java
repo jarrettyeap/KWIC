@@ -11,6 +11,12 @@ public class Pipe<E> {
     private boolean openForWriting = true;
     private boolean openForReading = true;
 
+    /**
+     * Puts data into the pipe buffer if it is open for writing.
+     *
+     * @param object object of generic type E
+     * @return true if added into buffer successfully else false
+     */
     public synchronized boolean put(E object) {
         if (!openForWriting)
             throw new RuntimeException(new IOException("Pipe has been closed"));
@@ -20,6 +26,13 @@ public class Pipe<E> {
         return result;
     }
 
+    /**
+     * Retrieve data from pipe buffer if it is open for reading and buffer
+     * is not empty.
+     *
+     * @return the object retrieved from the pipe buffer
+     * @throws InterruptedException
+     */
     public synchronized E get() throws InterruptedException {
         if (!openForReading)
             throw new NoSuchElementException("Pipe is closed and empty");
@@ -33,12 +46,18 @@ public class Pipe<E> {
         return object;
     }
 
+    /**
+     * Closed the pipe for write operation and clear buffer.
+     */
     public synchronized void close() {
         openForWriting = false;
         pipeBuffer.add(null);
         notify();
     }
 
+    /**
+     * Open the pipe for read and write operations and clear buffer.
+     */
     public synchronized void open() {
         pipeBuffer.clear();
         openForWriting = true;

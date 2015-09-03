@@ -27,7 +27,9 @@ public abstract class Filter<I, O> implements Runnable {
                 outPipe.put(output);
             }
         } catch (InterruptedException e) {
-            // TODO: Handle Interrupts / Deadlocks
+            System.out.println("ERROR: Interrupted when passing data between filter");
+            e.printStackTrace();
+            return;
         }
         outPipe.close();
     }

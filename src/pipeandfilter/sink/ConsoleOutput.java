@@ -2,16 +2,19 @@ package pipeandfilter.sink;
 
 import pipeandfilter.pipe.Pipe;
 
+import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Scanner;
 
 public class ConsoleOutput implements Runnable {
+    /* Status Code for Menu Operation */
     private static final int TYPE_CONSOLE = 1;
     private static final int TYPE_FILE = 2;
+    private static final int ERROR_NOT_INT = -1;
+    private static final int MENU_IN_USE = 1;
+    private static final int MENU_STOP = 0;
 
     private Pipe<List<String>> outputPipe;
 
@@ -44,19 +47,35 @@ public class ConsoleOutput implements Runnable {
      * @param output the indexes to output
      */
     private void processAndDisplay(List<String> output) {
-        System.out.println("Index Generated. Select Output Method:");
-        System.out.println("1. Console");
-        System.out.println("2. File");
-        Scanner sc = new Scanner(System.in);
-        switch (sc.nextInt()) {
-            case TYPE_CONSOLE:
-                outputToConsole(output);
-                break;
-            case TYPE_FILE:
-                outputToFile(output);
-                break;
-            default:
-                System.out.println("ERROR: Invalid option.");
+        int status = MENU_IN_USE;
+        while (status == MENU_IN_USE) {
+            switch (promptType()) {
+                case TYPE_CONSOLE:
+                    status = outputToConsole(output);
+                    break;
+                case TYPE_FILE:
+                    status = outputToFile(output);
+                    break;
+                default:
+                    System.out.println("ERROR: Invalid option.");
+            }
+        }
+    }
+
+    /**
+     * Prompts the user for choice of output.
+     *
+     * @return integer value that represents the choice of input
+     */
+    private int promptType() {
+        try {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Index Generated. Select Output Method:");
+            System.out.println("1. Console");
+            System.out.println("2. Append to File");
+            return Integer.parseInt(sc.nextLine());
+        } catch (NumberFormatException e) {
+            return ERROR_NOT_INT;
         }
     }
 
@@ -66,7 +85,7 @@ public class ConsoleOutput implements Runnable {
      *
      * @param output the indexes to output
      */
-    private void outputToConsole(List<String> output) {
+    private int outputToConsole(List<String> output) {
         String header = "--------------------------";
 
         System.out.println(header);
@@ -78,6 +97,7 @@ public class ConsoleOutput implements Runnable {
         }
 
         System.out.println(header);
+        return MENU_STOP;
     }
 
     /**
@@ -85,17 +105,20 @@ public class ConsoleOutput implements Runnable {
      *
      * @param output the indexes to output
      */
-    private void outputToFile(List<String> output) {
+    private int outputToFile(List<String> output) {
         System.out.println("Enter Path for Output File:");
         Scanner sc = new Scanner(System.in);
-        String outputFile = sc.nextLine();
-        try {
+        String outputPath = sc.nextLine();
+
+        try (PrintWriter out = new PrintWriter((new FileWriter(outputPath, true)))) {
             for (String title : output) {
-                Files.write(Paths.get(outputFile), title.getBytes(), StandardOpenOption.APPEND);
+                out.println(title);
             }
         } catch (IOException e) {
             System.out.println("ERROR: Problem occurred writing to output file.");
-            e.printStackTrace();
+            return MENU_IN_USE;
         }
+
+        return MENU_STOP;
     }
 }

@@ -19,6 +19,6 @@ public class Duplicate {
             }
         }
 
-       return arrayList;
+        return arrayList;
     }
 }
