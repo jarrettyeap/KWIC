@@ -2,10 +2,11 @@ package adt.sort;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class AlphabetSort {
 
-    ArrayList<String> sortedList = new ArrayList<String>();
+    List<String> sortedList = new ArrayList<String>();
 
     /**
      * To perform an alphabetical sort on the ArrayList
@@ -13,7 +14,7 @@ public class AlphabetSort {
      * @param inputList
      * @return
      */
-    public void alphabetize(ArrayList<String> inputList) {
+    public void alphabetize(List<String> inputList) {
         Collections.sort(inputList);
         sortedList = inputList;
     }
@@ -23,7 +24,7 @@ public class AlphabetSort {
      *
      * @return
      */
-    public ArrayList<String> getSortedList() {
+    public List<String> getSortedList() {
         return sortedList;
     }
 }

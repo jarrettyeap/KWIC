@@ -1,6 +1,7 @@
 package adt.shift;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CircularShift {
 
@@ -12,7 +13,7 @@ public class CircularShift {
      * @param inputArray
      * @return
      */
-    public void circularize(ArrayList<String> inputArray) {
+    public void circularize(List<String> inputArray) {
         ArrayList<String> arrayShifting = new ArrayList<String>();
 
         for (int i = 0; i < inputArray.size(); i++) {
@@ -37,7 +38,7 @@ public class CircularShift {
      *
      * @return
      */
-    public ArrayList<String> getShiftedList() {
+    public List<String> getShiftedList() {
         return shiftedList;
     }
 

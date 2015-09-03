@@ -3,10 +3,11 @@ package adt.memory;
 import adt.utility.Duplicate;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class NoiseWordMemory {
 
-    private ArrayList<String> noiseWordList = new ArrayList<String>();
+    private List<String> noiseWordList = new ArrayList<String>();
     private static NoiseWordMemory noiseWordInstance = null;
 
     protected NoiseWordMemory() {
@@ -31,11 +32,11 @@ public class NoiseWordMemory {
         return noiseWordList.get(position);
     }
 
-    public ArrayList<String> getArrayList() {
+    public List<String> getArrayList() {
         return noiseWordList;
     }
 
-    public void setArrayList(ArrayList<String> list) {
+    public void setArrayList(List<String> list) {
         noiseWordList = Duplicate.checkDuplicate(list);
     }
 }

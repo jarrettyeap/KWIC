@@ -3,22 +3,23 @@ package adt.filter;
 import adt.memory.NoiseWordMemory;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class NoiseFilter {
 
     NoiseWordMemory noiseWordArray = NoiseWordMemory.getInstance();
 
-    private ArrayList<String> filterList = new ArrayList<String>();
-    private ArrayList<String> noiseWordList = noiseWordArray.getArrayList();
+    private List<String> filterList = new ArrayList<String>();
+    private List<String> noiseWordList = noiseWordArray.getArrayList();
 
 
     /**
      * To filter out String with noise word as the 1st word of the sentence
      *
-     * @param inputArray
+     * @param list
      * @return
      */
-    public void noiseWordFilter(ArrayList<String> inputArray) {
+    public void noiseWordFilter(List<String> list) {
 
         String noiseWord;
         String inputString;
@@ -26,18 +27,18 @@ public class NoiseFilter {
         for (int i = 0; i < noiseWordList.size(); i++) {
             noiseWord = noiseWordList.get(i);
 
-            for (int j = 0; j < inputArray.size(); j++) {
-                inputString = inputArray.get(j);
+            for (int j = 0; j < list.size(); j++) {
+                inputString = list.get(j);
                 String[] stringArray = inputString.split("\\s");
 
                 if (stringArray[0].equalsIgnoreCase(noiseWord)) {
-                    inputArray.remove(j);
+                    list.remove(j);
                     j--;
                 }
             }
         }
 
-        filterList = inputArray;
+        filterList = list;
     }
 
     /**
@@ -45,7 +46,7 @@ public class NoiseFilter {
      *
      * @return
      */
-    public ArrayList<String> getFilterList() {
+    public List<String> getFilterList() {
         return filterList;
     }
 

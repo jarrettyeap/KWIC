@@ -3,10 +3,11 @@ package adt.memory;
 import adt.utility.Duplicate;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MovieTitleMemory {
 
-    private ArrayList<String> movieTitleList = new ArrayList<String>();
+    private List<String> movieTitles = new ArrayList<String>();
     private static MovieTitleMemory movieTitleInstance = null;
 
     protected MovieTitleMemory() {
@@ -20,23 +21,23 @@ public class MovieTitleMemory {
     }
 
     public void add(String title) {
-        movieTitleList.add(title);
+        movieTitles.add(title);
     }
 
     public void delete(int position) {
-        movieTitleList.remove(position);
+        movieTitles.remove(position);
     }
 
     public String get(int position) {
-        return movieTitleList.get(position);
+        return movieTitles.get(position);
     }
 
-    public void setArrayList(ArrayList<String> list) {
-        movieTitleList = Duplicate.checkDuplicate(list);
+    public void setArrayList(List<String> list) {
+        movieTitles = Duplicate.checkDuplicate(list);
     }
 
-    public ArrayList<String> getArrayList() {
-        return movieTitleList;
+    public List<String> getMovieTitles() {
+        return movieTitles;
     }
 
 }
