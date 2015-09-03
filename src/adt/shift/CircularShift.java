@@ -14,7 +14,7 @@ public class CircularShift {
      */
     public void circularize(List<String> inputList) {
         List<String> arrayShifting = new ArrayList<String>();
-
+        
         for (int i = 0; i < inputList.size(); i++) {
             String string = inputList.get(i);
             String[] stringArray = string.split("\\s+");

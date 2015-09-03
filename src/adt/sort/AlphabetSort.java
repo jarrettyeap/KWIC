@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class AlphabetSort {
-
     private List<String> sortedList = new ArrayList<String>();
 
     /**

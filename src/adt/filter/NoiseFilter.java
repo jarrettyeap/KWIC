@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NoiseFilter {
-
     private List<String> filterList = new ArrayList<String>();
 
     /**
@@ -19,18 +18,15 @@ public class NoiseFilter {
 
         for (int i = 0; i < noiseWordList.size(); i++) {
             String noiseWord = noiseWordList.get(i);
-
             for (int j = 0; j < inputList.size(); j++) {
                 String inputString = inputList.get(j);
                 String[] stringArray = inputString.split("\\s+");
-
                 if (stringArray[0].equalsIgnoreCase(noiseWord)) {
                     inputList.remove(j);
                     j--;
                 }
             }
         }
-
         filterList = inputList;
     }
 
