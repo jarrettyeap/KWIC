@@ -3,17 +3,18 @@ package adt.capitalize;
 import adt.memory.NoiseWordMemory;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Capitalize {
 
     NoiseWordMemory noiseWordArray = NoiseWordMemory.getInstance();
 
-    private ArrayList<String> noiseWordList = noiseWordArray.getArrayList();
-    private ArrayList<String> capitalizeList = new ArrayList<String>();
+    private List<String> noiseWordList = noiseWordArray.getArrayList();
+    private List<String> capitalizeList = new ArrayList<String>();
 
-    public void capitalize(ArrayList<String> inputArray) {
+    public void capitalize(List<String> inputArray) {
 
-        ArrayList<String> arrayCapitalizing = new ArrayList<String>();
+        List<String> arrayCapitalizing = new ArrayList<String>();
 
         for (int i = 0; i < inputArray.size(); i++) {
             String string = inputArray.get(i);
@@ -38,7 +39,7 @@ public class Capitalize {
         capitalizeList = arrayCapitalizing;
     }
 
-    public ArrayList<String> getCapitalList() {
+    public List<String> getCapitalList() {
         return capitalizeList;
     }
 }
