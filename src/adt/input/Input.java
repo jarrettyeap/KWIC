@@ -5,6 +5,7 @@ import adt.memory.TitleMemory;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ public class Input {
 
     private TitleMemory titleMemory = TitleMemory.getInstance();
     private NoiseWordMemory noiseMemory = NoiseWordMemory.getInstance();
+	private Scanner sc;
 
     /**
      * To prompt the user for the type of input and handle the input requested accordingly.
@@ -48,7 +50,7 @@ public class Input {
      */
     private int promptType() {
         try {
-            Scanner sc = new Scanner(System.in);
+            sc = new Scanner(System.in);
             System.out.println("Please enter your choice of input:");
             System.out.println("1. Manual Input");
             System.out.println("2. Read Local File");
@@ -76,7 +78,7 @@ public class Input {
 
         ArrayList<String> titleList = new ArrayList<String>();
         String temp;
-        Scanner sc = new Scanner(System.in);
+        sc = new Scanner(System.in);
         while (sc.hasNextLine()) {
             temp = sc.nextLine();
             if (temp.isEmpty()) {
@@ -97,7 +99,7 @@ public class Input {
 
         ArrayList<String> inputArray = new ArrayList<String>();
         String temp;
-        Scanner sc = new Scanner(System.in);
+        sc = new Scanner(System.in);
         while (sc.hasNextLine()) {
             temp = sc.nextLine();
             if (temp.isEmpty()) {
@@ -119,7 +121,7 @@ public class Input {
         List<String> titleList;
 
         try {
-            titleList = Files.readAllLines(new File(titleFilePath).toPath());
+            titleList = Files.readAllLines(new File(titleFilePath).toPath(), StandardCharsets.UTF_8);
         } catch (IOException e) {
             System.out.println("Problem reading given file path for titles.");
             return MENU_IN_USE;
@@ -130,7 +132,7 @@ public class Input {
         List<String> noiseList;
 
         try {
-            noiseList = Files.readAllLines(new File(ignoreFilePath).toPath());
+            noiseList = Files.readAllLines(new File(ignoreFilePath).toPath(), StandardCharsets.UTF_8);
         } catch (IOException e) {
             System.out.println("Problem reading given file path for ignored (noise) words.");
             return MENU_IN_USE;

@@ -5,6 +5,7 @@ import pipeandfilter.pipe.Pipe;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.*;
 
@@ -108,7 +109,7 @@ public class ConsoleInput implements Runnable {
         List<String> titleList;
 
         try {
-            titleList = Files.readAllLines(new File(titleFilePath).toPath());
+            titleList = Files.readAllLines(new File(titleFilePath).toPath(), StandardCharsets.UTF_8);
         } catch (IOException e) {
             System.out.println("Problem reading given file path for titles.");
             return MENU_IN_USE;
@@ -119,7 +120,7 @@ public class ConsoleInput implements Runnable {
         List<String> ignoreList;
 
         try {
-            ignoreList = Files.readAllLines(new File(ignoreFilePath).toPath());
+            ignoreList = Files.readAllLines(new File(ignoreFilePath).toPath(), StandardCharsets.UTF_8);
         } catch (IOException e) {
             System.out.println("Problem reading given file path for ignored words.");
             return MENU_IN_USE;
