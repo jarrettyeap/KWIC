@@ -16,5 +16,5 @@ Using IDE
 - Keywords at fully uppercased while non-keywords are in lowercase for current implementation.
 
 ###Requirements
-Java 7 JDK
-Recommended IDE: Jetbrains Intellij <3
+- Java 7 JDK
+- Recommended IDE: Jetbrains Intellij <3
