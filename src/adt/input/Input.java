@@ -39,17 +39,39 @@ public class Input {
     public void addNoiseWord() {
         System.out.println("Please key in the list of noise words: ");
         System.out.println("Press enter to terminate.");
-
+        
+        ArrayList<String> inputArray = new ArrayList<String>();
         String temp;
         while (sc.hasNextLine()) {
             temp = sc.nextLine();
             if (temp.isEmpty()) {
                 break;
             }
-
+            inputArray.add(temp);
             noiseWordArray.add(temp);
         }
+        
+        noiseWordArray.setArrayList(inputArray);
+    }
+    
+    public void inputMethod() {
+        int inputType;
+        System.out.println("Please enter your choice of input:");
+        System.out.println("1. Manual Input");
+        System.out.println("2. Read Local File");
 
+        if (sc.hasNextInt()) {
+            inputType = sc.nextInt();
+            sc.nextLine();
+            if (inputType == 1) {
+                addMovieTitle();
+                addNoiseWord();
+            } else if (inputType == 2) {
+                System.out.println("File Input");
+            }
+        } else {
+            System.out.println("Invalid Input");
+        }
     }
 }
 
