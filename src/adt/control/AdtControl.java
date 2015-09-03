@@ -26,13 +26,12 @@ public class AdtControl {
     public static void setup() {
         input.inputMethod();
 
-        circularShift.circularize(movieTitleArray.getArrayList());
+        circularShift.circularize(movieTitleArray.getMovieTitles());
         noiseFilter.noiseWordFilter(circularShift.getShiftedList());
         alphabetSort.alphabetize(noiseFilter.getFilterList());
         capitalize.capitalize(alphabetSort.getSortedList());
 
         output.print(capitalize.getCapitalList());
-
-        output.print(noiseWordArray.getArrayList());
+        output.print(noiseWordArray.getNoiseWords());
     }
 }

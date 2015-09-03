@@ -10,7 +10,7 @@ public class NoiseFilter {
     NoiseWordMemory noiseWordArray = NoiseWordMemory.getInstance();
 
     private List<String> filterList = new ArrayList<String>();
-    private List<String> noiseWordList = noiseWordArray.getArrayList();
+    private List<String> noiseWordList = noiseWordArray.getNoiseWords();
 
 
     /**

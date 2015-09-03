@@ -9,7 +9,7 @@ public class Capitalize {
 
     NoiseWordMemory noiseWordArray = NoiseWordMemory.getInstance();
 
-    private List<String> noiseWordList = noiseWordArray.getArrayList();
+    private List<String> noiseWordList = noiseWordArray.getNoiseWords();
     private List<String> capitalizeList = new ArrayList<String>();
 
     public void capitalize(List<String> inputArray) {

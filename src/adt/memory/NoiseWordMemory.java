@@ -32,7 +32,7 @@ public class NoiseWordMemory {
         return noiseWordList.get(position);
     }
 
-    public List<String> getArrayList() {
+    public List<String> getNoiseWords() {
         return noiseWordList;
     }
 
