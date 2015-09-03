@@ -10,11 +10,13 @@ public class AlphabetSort {
     /**
      * Performs an alphabetical sort on the given input list.
      *
-     * @param inputList the list to sort and store
+     * @param tempList the list to sort and store
      */
-    public void alphabetize(List<String> inputList) {
-        Collections.sort(inputList);
-        sortedList = inputList;
+    public void alphabetize(List<String> list) {
+        List<String> tempList = new ArrayList<String>(list);
+    	
+    	Collections.sort(tempList);
+        sortedList = tempList;
     }
 
     /**

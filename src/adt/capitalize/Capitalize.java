@@ -11,14 +11,15 @@ public class Capitalize {
     /**
      * Transforms keyword (non-noise words) into uppercase and the rest to lowercase.
      *
-     * @param inputList the list to transform and store
+     * @param tempList the list to transform and store
      */
-    public void capitalize(List<String> inputList) {
+    public void capitalize(List<String> list) {
         List<String> noiseWordList = NoiseWordMemory.getInstance().getNoiseList();
         List<String> arrayCapitalizing = new ArrayList<String>();
+        List<String> tempList = new ArrayList<String>(list);
 
-        for (int i = 0; i < inputList.size(); i++) {
-            String string = inputList.get(i);
+        for (int i = 0; i < tempList.size(); i++) {
+            String string = tempList.get(i);
             String[] stringArray = string.split("\\s+");
             StringBuilder sb = new StringBuilder();
 
