@@ -3,50 +3,43 @@ package adt.filter;
 import adt.memory.NoiseWordMemory;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class NoiseFilter {
 
-    NoiseWordMemory noiseWordArray = NoiseWordMemory.getInstance();
-
-    private ArrayList<String> filterList = new ArrayList<String>();
-    private ArrayList<String> noiseWordList = noiseWordArray.getArrayList();
-
+    private List<String> filterList = new ArrayList<String>();
 
     /**
-     * To filter out String with noise word as the 1st word of the sentence
+     * To filter out String with noise (ignored) word as the first word of the sentence.
      *
-     * @param inputArray
-     * @return
+     * @param inputList the list of string to filter and store
      */
-    public void noiseWordFilter(ArrayList<String> inputArray) {
-
-        String noiseWord;
-        String inputString;
+    public void noiseWordFilter(List<String> inputList) {
+        List<String> noiseWordList = NoiseWordMemory.getInstance().getNoiseList();
 
         for (int i = 0; i < noiseWordList.size(); i++) {
-            noiseWord = noiseWordList.get(i);
+            String noiseWord = noiseWordList.get(i);
 
-            for (int j = 0; j < inputArray.size(); j++) {
-                inputString = inputArray.get(j);
-                String[] stringArray = inputString.split("\\s");
+            for (int j = 0; j < inputList.size(); j++) {
+                String inputString = inputList.get(j);
+                String[] stringArray = inputString.split("\\s+");
 
                 if (stringArray[0].equalsIgnoreCase(noiseWord)) {
-                    inputArray.remove(j);
+                    inputList.remove(j);
                     j--;
                 }
             }
         }
 
-        filterList = inputArray;
+        filterList = inputList;
     }
 
     /**
-     * To return the filtered ArrayList
+     * Returns the filtered list stored in the object.
      *
-     * @return
+     * @return the list stored in the current class object
      */
-    public ArrayList<String> getFilterList() {
+    public List<String> getFilterList() {
         return filterList;
     }
-
 }

@@ -2,28 +2,28 @@ package adt.sort;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class AlphabetSort {
 
-    ArrayList<String> sortedList = new ArrayList<String>();
+    private List<String> sortedList = new ArrayList<String>();
 
     /**
-     * To perform an alphabetical sort on the ArrayList
+     * Performs an alphabetical sort on the given input list.
      *
-     * @param inputList
-     * @return
+     * @param inputList the list to sort and store
      */
-    public void alphabetize(ArrayList<String> inputList) {
+    public void alphabetize(List<String> inputList) {
         Collections.sort(inputList);
         sortedList = inputList;
     }
 
     /**
-     * To return the sorted ArrayList
+     * Returns the sorted list in ascending order in the object.
      *
-     * @return
+     * @return the list stored in the current class object
      */
-    public ArrayList<String> getSortedList() {
+    public List<String> getSortedList() {
         return sortedList;
     }
 }

@@ -105,7 +105,7 @@ public class ConsoleInput implements Runnable {
         System.out.println("Please enter the path of title file:");
         Scanner sc = new Scanner(System.in);
         String titleFilePath = sc.nextLine();
-        List<String> titleList = new ArrayList<String>();
+        List<String> titleList;
 
         try {
             titleList = Files.readAllLines(new File(titleFilePath).toPath());
@@ -116,7 +116,7 @@ public class ConsoleInput implements Runnable {
 
         System.out.println("Please enter the path of ignored words file:");
         String ignoreFilePath = sc.nextLine();
-        List<String> ignoreList = new ArrayList<String>();
+        List<String> ignoreList;
 
         try {
             ignoreList = Files.readAllLines(new File(ignoreFilePath).toPath());

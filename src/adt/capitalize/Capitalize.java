@@ -3,21 +3,23 @@ package adt.capitalize;
 import adt.memory.NoiseWordMemory;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Capitalize {
+    private List<String> capitalizeList = new ArrayList<String>();
 
-    NoiseWordMemory noiseWordArray = NoiseWordMemory.getInstance();
+    /**
+     * Transforms keyword (non-noise words) into uppercase and the rest to lowercase.
+     *
+     * @param inputList the list to transform and store
+     */
+    public void capitalize(List<String> inputList) {
+        List<String> noiseWordList = NoiseWordMemory.getInstance().getNoiseList();
+        List<String> arrayCapitalizing = new ArrayList<String>();
 
-    private ArrayList<String> noiseWordList = noiseWordArray.getArrayList();
-    private ArrayList<String> capitalizeList = new ArrayList<String>();
-
-    public void capitalize(ArrayList<String> inputArray) {
-
-        ArrayList<String> arrayCapitalizing = new ArrayList<String>();
-
-        for (int i = 0; i < inputArray.size(); i++) {
-            String string = inputArray.get(i);
-            String[] stringArray = string.split("\\s");
+        for (int i = 0; i < inputList.size(); i++) {
+            String string = inputList.get(i);
+            String[] stringArray = string.split("\\s+");
             StringBuilder sb = new StringBuilder();
 
             for (int j = 0; j < stringArray.length; j++) {
@@ -38,7 +40,12 @@ public class Capitalize {
         capitalizeList = arrayCapitalizing;
     }
 
-    public ArrayList<String> getCapitalList() {
+    /**
+     * Returns the capitalized list stored in the object.
+     *
+     * @return the list stored in the current class object
+     */
+    public List<String> getCapitalList() {
         return capitalizeList;
     }
 }
