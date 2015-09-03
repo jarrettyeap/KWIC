@@ -1,7 +1,6 @@
 package adt.control;
 
 import adt.capitalize.Capitalize;
-import adt.utility.Duplicate;
 import adt.filter.NoiseFilter;
 import adt.input.Input;
 import adt.memory.MovieTitleMemory;
@@ -17,7 +16,6 @@ public class AdtControl {
     static CircularShift circularShift = new CircularShift();
     static NoiseFilter noiseFilter = new NoiseFilter();
     static AlphabetSort alphabetSort = new AlphabetSort();
-    static Duplicate duplicate = new Duplicate();
     static Capitalize capitalize = new Capitalize();
     static MovieTitleMemory movieTitleArray = MovieTitleMemory.getInstance();
     static NoiseWordMemory noiseWordArray = NoiseWordMemory.getInstance();
@@ -28,14 +26,13 @@ public class AdtControl {
     public static void setup() {
         input.inputMethod();
 
-        movieTitleArray.setArrayList(movieTitleArray.getArrayList());
-        noiseWordArray.setArrayList(noiseWordArray.getArrayList());
-
         circularShift.circularize(movieTitleArray.getArrayList());
         noiseFilter.noiseWordFilter(circularShift.getShiftedList());
         alphabetSort.alphabetize(noiseFilter.getFilterList());
         capitalize.capitalize(alphabetSort.getSortedList());
 
         output.print(capitalize.getCapitalList());
+        
+        output.print(noiseWordArray.getArrayList());
     }
 }
