@@ -91,7 +91,7 @@ public class ConsoleInput implements Runnable {
         String ignoreWords = sc.nextLine();
 
         ArrayList<String> ignoreList =
-            new ArrayList<String>(Arrays.asList(ignoreWords.split("(,\\s)+")));
+            new ArrayList<String>(Arrays.asList(ignoreWords.split("[,\\s]")));
         toLowercase(ignoreList);
         MasterControl.setNoiseWords(compactList(ignoreList));
 
