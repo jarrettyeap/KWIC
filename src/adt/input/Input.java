@@ -88,17 +88,17 @@ public class Input {
             titleList.add(temp);
         }
 
-        titleMemory.setList(titleList);
+        titleMemory.setList(compactList(titleList));
     }
 
     /**
      * To add a list of ignored/noise word(s) to the system
      */
     private void addNoiseWord() {
-    	System.out.println("Please enter the list of ignore words (separated by space or comma): ");
+        System.out.println("Please enter the list of ignore words (separated by space or comma): ");
         String noiseWords = sc.nextLine();
-        List<String> noiseList = new ArrayList<String>(Arrays.asList(noiseWords.split("[,\\s]")));
-        noiseMemory.setList(noiseList);
+        List<String> noiseList = new ArrayList<String>(Arrays.asList(noiseWords.split("[,\\s]+")));
+        noiseMemory.setList(compactList(noiseList));
     }
 
     /**
@@ -130,9 +130,22 @@ public class Input {
             return MENU_IN_USE;
         }
 
-        titleMemory.setList(titleList);
-        noiseMemory.setList(noiseList);
+        titleMemory.setList(compactList(titleList));
+        noiseMemory.setList(compactList(noiseList));
         return MENU_STOP;
+    }
+
+
+    /**
+     * Helper method to remove all empty strings and null from the given list
+     *
+     * @param list the list of string
+     * @return the compacted list
+     */
+    private List<String> compactList(List<String> list) {
+        // Remove Empty String and Null Elements
+        list.removeAll(Arrays.asList(null, ""));
+        return list;
     }
 }
 
