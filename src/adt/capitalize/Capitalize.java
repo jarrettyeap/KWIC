@@ -11,7 +11,7 @@ public class Capitalize {
     /**
      * Transforms keyword (non-noise words) into uppercase and the rest to lowercase.
      *
-     * @param tempList the list to transform and store
+     * @param list the list to transform and store
      */
     public void capitalize(List<String> list) {
         List<String> noiseWordList = NoiseWordMemory.getInstance().getNoiseList();

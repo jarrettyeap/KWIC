@@ -10,12 +10,12 @@ public class CircularShift {
     /**
      * Circularizes every sentence in the given list and store in class object.
      *
-     * @param tempList the list to circularize
+     * @param list the list to circularize
      */
     public void circularize(List<String> list) {
         List<String> arrayShifting = new ArrayList<String>();
         List<String> tempList = new ArrayList<String>(list);
-        
+
         for (int i = 0; i < tempList.size(); i++) {
             String string = tempList.get(i);
             String[] stringArray = string.split("\\s+");

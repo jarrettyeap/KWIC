@@ -21,7 +21,7 @@ public class Input {
 
     private TitleMemory titleMemory = TitleMemory.getInstance();
     private NoiseWordMemory noiseMemory = NoiseWordMemory.getInstance();
-	private Scanner sc;
+    private Scanner sc;
 
     /**
      * To prompt the user for the type of input and handle the input requested accordingly.
@@ -121,7 +121,8 @@ public class Input {
         List<String> titleList;
 
         try {
-            titleList = Files.readAllLines(new File(titleFilePath).toPath(), StandardCharsets.UTF_8);
+            titleList =
+                Files.readAllLines(new File(titleFilePath).toPath(), StandardCharsets.UTF_8);
         } catch (IOException e) {
             System.out.println("Problem reading given file path for titles.");
             return MENU_IN_USE;
@@ -132,7 +133,8 @@ public class Input {
         List<String> noiseList;
 
         try {
-            noiseList = Files.readAllLines(new File(ignoreFilePath).toPath(), StandardCharsets.UTF_8);
+            noiseList =
+                Files.readAllLines(new File(ignoreFilePath).toPath(), StandardCharsets.UTF_8);
         } catch (IOException e) {
             System.out.println("Problem reading given file path for ignored (noise) words.");
             return MENU_IN_USE;

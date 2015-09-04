@@ -18,7 +18,7 @@ public class ConsoleInput implements Runnable {
     private static final int MENU_STOP = 0;
 
     private Pipe<List<String>> inputPipe;
-	private Scanner sc;
+    private Scanner sc;
 
     public ConsoleInput(Pipe<List<String>> input) {
         this.inputPipe = input;
@@ -110,7 +110,8 @@ public class ConsoleInput implements Runnable {
         List<String> titleList;
 
         try {
-            titleList = Files.readAllLines(new File(titleFilePath).toPath(), StandardCharsets.UTF_8);
+            titleList =
+                Files.readAllLines(new File(titleFilePath).toPath(), StandardCharsets.UTF_8);
         } catch (IOException e) {
             System.out.println("Problem reading given file path for titles.");
             return MENU_IN_USE;
@@ -121,7 +122,8 @@ public class ConsoleInput implements Runnable {
         List<String> ignoreList;
 
         try {
-            ignoreList = Files.readAllLines(new File(ignoreFilePath).toPath(), StandardCharsets.UTF_8);
+            ignoreList =
+                Files.readAllLines(new File(ignoreFilePath).toPath(), StandardCharsets.UTF_8);
         } catch (IOException e) {
             System.out.println("Problem reading given file path for ignored words.");
             return MENU_IN_USE;

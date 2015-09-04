@@ -11,12 +11,12 @@ public class NoiseFilter {
     /**
      * To filter out String with noise (ignored) word as the first word of the sentence.
      *
-     * @param tempList the list of string to filter and store
+     * @param list the list of string to filter and store
      */
     public void noiseWordFilter(List<String> list) {
         List<String> noiseWordList = NoiseWordMemory.getInstance().getNoiseList();
         List<String> tempList = new ArrayList<String>(list);
-        
+
         for (int i = 0; i < noiseWordList.size(); i++) {
             String noiseWord = noiseWordList.get(i);
             for (int j = 0; j < tempList.size(); j++) {

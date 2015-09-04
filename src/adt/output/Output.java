@@ -15,7 +15,7 @@ public class Output {
     private static final int MENU_STOP = 0;
 
     private static final String header = "--------------------------";
-	private Scanner sc;
+    private Scanner sc;
 
     /**
      * Prompt the user for the type of output required and perform the corresponding
@@ -96,6 +96,7 @@ public class Output {
             return MENU_IN_USE;
         }
 
+        System.out.println("Indexes generated into file successfully.");
         return MENU_STOP;
     }
 }

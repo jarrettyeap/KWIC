@@ -17,7 +17,7 @@ public class ConsoleOutput implements Runnable {
     private static final int MENU_STOP = 0;
 
     private Pipe<List<String>> outputPipe;
-	private Scanner sc;
+    private Scanner sc;
 
     public ConsoleOutput(Pipe<List<String>> output) {
         this.outputPipe = output;
@@ -120,6 +120,7 @@ public class ConsoleOutput implements Runnable {
             return MENU_IN_USE;
         }
 
+        System.out.println("Indexes generated into file successfully.");
         return MENU_STOP;
     }
 }
