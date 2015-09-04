@@ -121,6 +121,7 @@ public class ConsoleOutput implements Runnable {
         }
 
         System.out.println("Indexes generated into file successfully.");
+        System.out.println();
         return MENU_STOP;
     }
 }

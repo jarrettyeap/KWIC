@@ -97,6 +97,7 @@ public class Output {
         }
 
         System.out.println("Indexes generated into file successfully.");
+        System.out.println();
         return MENU_STOP;
     }
 }
