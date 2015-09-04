@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -94,21 +95,10 @@ public class Input {
      * To add a list of ignored/noise word(s) to the system
      */
     private void addNoiseWord() {
-        System.out.println("Please key in the list of noise words: ");
-        System.out.println("Press enter to terminate.");
-
-        ArrayList<String> inputArray = new ArrayList<String>();
-        String temp;
-        sc = new Scanner(System.in);
-        while (sc.hasNextLine()) {
-            temp = sc.nextLine();
-            if (temp.isEmpty()) {
-                break;
-            }
-            inputArray.add(temp);
-        }
-
-        noiseMemory.setList(inputArray);
+    	System.out.println("Please enter the list of ignore words (separated by space or comma): ");
+        String noiseWords = sc.nextLine();
+        List<String> noiseList = new ArrayList<String>(Arrays.asList(noiseWords.split("[,\\s]")));
+        noiseMemory.setList(noiseList);
     }
 
     /**
